@@ -1,0 +1,36 @@
+# -----------------------------------
+# Archivos temporales de IDEs
+# -----------------------------------
+.idea/
+.vscode/
+*.iml
+*.class
+*.log
+
+# -----------------------------------
+# Node / Frontend
+# -----------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/npm-debug.log*
+frontend/yarn-error.log*
+frontend/.DS_Store
+
+# -----------------------------------
+# Java / Backend
+# -----------------------------------
+backend/target/
+backend/*.log
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/.classpath
+backend/.project
+backend/.settings/
+
+# -----------------------------------
+# Archivos generales
+# -----------------------------------
+.DS_Store
+Thumbs.db
+*~
