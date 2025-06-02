@@ -1,6 +1,6 @@
-# mi-proyecto-fullstack
+# 🛠️ Proyecto Fullstack: Gestión de Productos y Categorías
 
-> **Aplicación completa (Fullstack)** para gestionar Productos y Categorías usando **Spring Boot** en el backend y **React + TypeScript + Vite** en el frontend.
+Este proyecto es una aplicación **Fullstack** desarrollada con **Spring Boot** en el backend y **React + TypeScript + Vite** en el frontend. Permite administrar productos y sus categorías a través de una interfaz web moderna y una API REST.
 
 ---
 
@@ -44,6 +44,8 @@ mi-proyecto-fullstack
 ├── .gitignore               ← Archivos y carpetas a ignorar en Git
 └── README.md                ← Esta documentación
 ```
+
+---
 
 ## 🔧 Prerrequisitos
 
@@ -226,12 +228,4 @@ Si detectas un bug en producción que no puede esperar hasta el siguiente releas
 Para facilitar el historial y que cualquiera entienda rápidamente el objetivo de cada cambio, sigue esta convención:
 
 - **feat(ámbito):** Nueva funcionalidad.  
-  > Ejemplo: feat(producto): implementar búsqueda por rango de precio
-- **fix(ámbito):** Corrección de bug.  
-  > Ejemplo: fix(categoria): corregir validación de nombre duplicado
-- **refactor(ámbito):** Refactorización sin cambiar comportamiento.  
-  > Ejemplo: refactor(service): extraer lógica de validación a utilitario común
-- **chore(ámbito):** Tareas de mantenimiento (actualizar dependencias, cambiar estructura).  
-  > Ejemplo: chore(restructure): mover backend/ y frontend/ a la raíz del repo
-
-> **Nota:** ámbito puede ser un módulo, entidad o carpeta como producto, categoria, api, etc.
+  > Ejemplo: feat(producto): implementar búsqueda por rango
