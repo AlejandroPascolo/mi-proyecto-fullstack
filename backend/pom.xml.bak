@@ -10,59 +10,44 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Backend Spring Boot Productos-Categorías</name>
   <description>Aplicación Spring Boot + Hibernate/JPA para manejo de Productos y Categorías con SQL Server</description>
-  <packaging>jar</packaging>
 
-  <!-- Propiedades útiles -->
   <properties>
     <java.version>17</java.version>
-    <!-- Fija la versión de Spring Boot que usarás -->
-    <spring-boot.version>3.0.6</spring-boot.version>
+    <spring-boot.version>3.1.0</spring-boot.version>
+    <spring-boot-maven-plugin.version>${spring-boot.version}</spring-boot-maven-plugin.version>
   </properties>
 
-  <!-- Parent POM de Spring Boot -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.6</version>
+    <version>${spring-boot.version}</version>
     <relativePath/>
   </parent>
 
-  <!-- Dependencias necesarias -->
   <dependencies>
-    <!-- Web (Tomcat embebido, MVC, Jackson) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
-    <!-- JPA / Hibernate -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-
-    <!-- Driver de SQL Server -->
     <dependency>
       <groupId>com.microsoft.sqlserver</groupId>
       <artifactId>mssql-jdbc</artifactId>
       <version>11.2.2.jre17</version>
       <scope>runtime</scope>
     </dependency>
-
-    <!-- Validaciones (javax.validation) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
-
-    <!-- Documentación Swagger/OpenAPI (opcional) -->
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
       <version>2.0.2</version>
     </dependency>
-
-    <!-- Tests -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -70,43 +55,36 @@
     </dependency>
   </dependencies>
 
-  <!-- ===================================== -->
-  <!--   Configuración de Build y Plugins   -->
-  <!-- ===================================== -->
+   <!-- ==================================== -->
+  <!--   Sección de Build (Maven Plugins)  -->
+  <!-- ==================================== -->
   <build>
+    <!-- Plugins existentes (por ejemplo, Spring Boot) -->
     <plugins>
-      <!-- 1) Plugin de Spring Boot para generar JAR ejecutable -->
+      <!-- Plugin de Spring Boot (si ya lo tienes, déjalo aquí) -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${spring-boot.version}</version>
-        <configuration>
-          <!-- Hace que el JAR resultante sea ejecutable -->
-          <executable>true</executable>
-        </configuration>
-        <executions>
-          <execution>
-            <!-- Se asegura de que se reempaquete al hacer 'package' -->
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
-      <!-- 2) Plugin Checkstyle (opcional, ya configurado en tu pom original) -->
+      <!-- ===================================== -->
+      <!--   Plugin de Checkstyle para Maven     -->
+      <!-- ===================================== -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.2.2</version> <!-- Ajusta a la versión más reciente si lo deseas -->
         <configuration>
+          <!-- Ruta al archivo de reglas en resources -->
           <configLocation>src/main/resources/checkstyle.xml</configLocation>
+          <encoding>UTF-8</encoding>
           <consoleOutput>true</consoleOutput>
-          <failsOnError>false</failsOnError>
+          <failsOnError>true</failsOnError>
         </configuration>
         <executions>
           <execution>
             <id>validate-style</id>
+            <!-- Se ejecuta en la fase 'verify', antes de empaquetar -->
             <phase>verify</phase>
             <goals>
               <goal>check</goal>
@@ -114,8 +92,12 @@
           </execution>
         </executions>
       </plugin>
+      <!-- ===================================== -->
+      <!--     (Si tuvieras otros plugins,     -->
+      <!--      agrégalos aquí)                 -->
+      <!-- ===================================== -->
     </plugins>
   </build>
-  <!-- Fin sección Build -->
+  <!-- Fin de la sección Build -->
 
 </project>

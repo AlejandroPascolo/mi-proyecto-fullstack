@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Categoria, Producto } from "../types/types";
-import CategorySelect from "./CategorySelect";
+import React, { useState, useEffect } from 'react';
+import { Categoria, Producto } from '../types/types';
+import CategorySelect from './CategorySelect';
 
 interface ProductFormProps {
   categorias: Categoria[];
@@ -19,15 +19,13 @@ const ProductForm: React.FC<ProductFormProps> = ({
   onUpdateProducto,
   productoEdit,
 }) => {
-  const [catNombre, setCatNombre] = useState<string>("");
-  const [catDescripcion, setCatDescripcion] = useState<string>("");
+  const [catNombre, setCatNombre] = useState<string>('');
+  const [catDescripcion, setCatDescripcion] = useState<string>('');
 
-  const [prodNombre, setProdNombre] = useState<string>("");
+  const [prodNombre, setProdNombre] = useState<string>('');
   const [prodPrecio, setProdPrecio] = useState<number>(0);
   const [prodStock, setProdStock] = useState<number>(0);
-  const [prodCategoriaId, setProdCategoriaId] = useState<number | undefined>(
-    undefined
-  );
+  const [prodCategoriaId, setProdCategoriaId] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     if (productoEdit) {
@@ -40,23 +38,23 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
   const handleSubmitCategoria = (e: React.FormEvent) => {
     e.preventDefault();
-    if (catNombre.trim() === "") {
-      alert("El nombre de la categoría no puede estar vacío");
+    if (catNombre.trim() === '') {
+      alert('El nombre de la categoría no puede estar vacío');
       return;
     }
     onSubmitCategoria && onSubmitCategoria(catNombre.trim(), catDescripcion.trim());
-    setCatNombre("");
-    setCatDescripcion("");
+    setCatNombre('');
+    setCatDescripcion('');
   };
 
   const handleSubmitProducto = (e: React.FormEvent) => {
     e.preventDefault();
     if (!prodCategoriaId) {
-      alert("Selecciona una categoría para el producto");
+      alert('Selecciona una categoría para el producto');
       return;
     }
-    if (prodNombre.trim() === "" || prodPrecio <= 0 || prodStock < 0) {
-      alert("Verifica los datos del producto");
+    if (prodNombre.trim() === '' || prodPrecio <= 0 || prodStock < 0) {
+      alert('Verifica los datos del producto');
       return;
     }
     if (productoEdit && onUpdateProducto) {
@@ -65,13 +63,13 @@ const ProductForm: React.FC<ProductFormProps> = ({
         nombre: prodNombre,
         precio: prodPrecio,
         stock: prodStock,
-        categoria: { id: prodCategoriaId, nombre: "", descripcion: "" },
+        categoria: { id: prodCategoriaId, nombre: '', descripcion: '' },
       };
       onUpdateProducto(updated);
     } else {
       onSubmitProducto &&
         onSubmitProducto(prodNombre.trim(), prodPrecio, prodStock, prodCategoriaId);
-      setProdNombre("");
+      setProdNombre('');
       setProdPrecio(0);
       setProdStock(0);
       setProdCategoriaId(undefined);
@@ -133,9 +131,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             onChange={setProdCategoriaId}
           />
 
-          <button type="submit">
-            {productoEdit ? "Actualizar Producto" : "Guardar Producto"}
-          </button>
+          <button type="submit">{productoEdit ? 'Actualizar Producto' : 'Guardar Producto'}</button>
         </>
       )}
     </form>

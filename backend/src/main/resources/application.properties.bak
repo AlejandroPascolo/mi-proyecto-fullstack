@@ -1,0 +1,30 @@
+# ===============================
+# Configuración de conexión JDBC
+# ===============================
+
+# URL de conexión a SQL Server en localhost, puerto 1433
+# Se añade “;encrypt=false” para DESHABILITAR SSL/TLS
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=Productos;encrypt=false
+
+# Usuario de SQL Server (SA)
+spring.datasource.username=sa
+
+# Contraseña para el usuario SA (reemplaza con tu contraseña real)
+spring.datasource.password=TuContraseñaDeSa
+
+# (Opcional) Nombre del driver JDBC (no suele ser obligatorio en Spring Boot 3.x, 
+# pues lo detecta automáticamente)
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# Dialecto de Hibernate para SQL Server
+spring.jpa.database-platform=org.hibernate.dialect.SQLServerDialect
+
+# (Opcional) Mostrar SQL en consola
+spring.jpa.show-sql=true
+
+# (Opcional) Crear o actualizar el esquema automáticamente
+# spring.jpa.hibernate.ddl-auto=update
+
+# ===============================
+# Fin de application.properties
+# ===============================

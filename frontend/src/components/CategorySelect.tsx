@@ -1,5 +1,5 @@
-import React from "react";
-import { Categoria } from "../types/types";
+import React from 'react';
+import { Categoria } from '../types/types';
 
 interface CategorySelectProps {
   categorias: Categoria[];
@@ -7,14 +7,10 @@ interface CategorySelectProps {
   onChange: (categoriaId: number | undefined) => void;
 }
 
-const CategorySelect: React.FC<CategorySelectProps> = ({
-  categorias,
-  selectedId,
-  onChange,
-}) => {
+const CategorySelect: React.FC<CategorySelectProps> = ({ categorias, selectedId, onChange }) => {
   return (
     <select
-      value={selectedId ?? ""}
+      value={selectedId ?? ''}
       onChange={(e) => {
         const value = e.target.value;
         onChange(value ? parseInt(value) : undefined);

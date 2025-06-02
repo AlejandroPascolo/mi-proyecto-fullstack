@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import { Categoria, Producto } from "./types/types";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { Categoria, Producto } from './types/types';
 import {
   fetchCategorias,
   fetchProductos,
@@ -9,26 +9,20 @@ import {
   crearProducto,
   actualizarProducto,
   eliminarProducto,
-} from "./api/api";
-import CategorySelect from "./components/CategorySelect";
-import FilterBar from "./components/FilterBar";
-import ProductList from "./components/ProductList";
-import ProductForm from "./components/ProductForm";
+} from './api/api';
+
+import FilterBar from './components/FilterBar';
+import ProductList from './components/ProductList';
+import ProductForm from './components/ProductForm';
 
 const App: React.FC = () => {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
   const [productos, setProductos] = useState<Producto[]>([]);
 
-  const [filtroNombre, setFiltroNombre] = useState<string>("");
-  const [filtroCategoriaId, setFiltroCategoriaId] = useState<number | undefined>(
-    undefined
-  );
-  const [filtroMinPrecio, setFiltroMinPrecio] = useState<number | undefined>(
-    undefined
-  );
-  const [filtroMaxPrecio, setFiltroMaxPrecio] = useState<number | undefined>(
-    undefined
-  );
+  const [filtroNombre, setFiltroNombre] = useState<string>('');
+  const [filtroCategoriaId, setFiltroCategoriaId] = useState<number | undefined>(undefined);
+  const [filtroMinPrecio, setFiltroMinPrecio] = useState<number | undefined>(undefined);
+  const [filtroMaxPrecio, setFiltroMaxPrecio] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     cargarCategorias();
@@ -41,7 +35,7 @@ const App: React.FC = () => {
       setCategorias(data);
     } catch (err) {
       console.error(err);
-      alert("Error al cargar categorías");
+      alert('Error al cargar categorías');
     }
   };
 
@@ -51,7 +45,7 @@ const App: React.FC = () => {
       setProductos(data);
     } catch (err) {
       console.error(err);
-      alert("Error al cargar productos");
+      alert('Error al cargar productos');
     }
   };
 
@@ -66,12 +60,12 @@ const App: React.FC = () => {
       setProductos(data);
     } catch (err) {
       console.error(err);
-      alert("Error al filtrar productos");
+      alert('Error al filtrar productos');
     }
   };
 
   const resetearFiltros = () => {
-    setFiltroNombre("");
+    setFiltroNombre('');
     setFiltroCategoriaId(undefined);
     setFiltroMinPrecio(undefined);
     setFiltroMaxPrecio(undefined);
@@ -82,10 +76,10 @@ const App: React.FC = () => {
     try {
       await crearCategoria({ nombre, descripcion });
       cargarCategorias();
-      alert("Categoría creada con éxito");
+      alert('Categoría creada con éxito');
     } catch (err) {
       console.error(err);
-      alert("Error al crear categoría");
+      alert('Error al crear categoría');
     }
   };
 
@@ -103,10 +97,10 @@ const App: React.FC = () => {
         categoria: { id: categoriaId },
       });
       cargarProductos();
-      alert("Producto creado con éxito");
+      alert('Producto creado con éxito');
     } catch (err) {
       console.error(err);
-      alert("Error al crear producto");
+      alert('Error al crear producto');
     }
   };
 
@@ -125,32 +119,32 @@ const App: React.FC = () => {
         categoria: { id: categoriaId },
       });
       cargarProductos();
-      alert("Producto actualizado con éxito");
+      alert('Producto actualizado con éxito');
     } catch (err) {
       console.error(err);
-      alert("Error al actualizar producto");
+      alert('Error al actualizar producto');
     }
   };
 
   const manejarEliminarProducto = async (id: number) => {
-    if (!window.confirm("¿Estás seguro de eliminar este producto?")) {
+    if (!window.confirm('¿Estás seguro de eliminar este producto?')) {
       return;
     }
     try {
       await eliminarProducto(id);
       cargarProductos();
-      alert("Producto eliminado");
+      alert('Producto eliminado');
     } catch (err) {
       console.error(err);
-      alert("Error al eliminar producto");
+      alert('Error al eliminar producto');
     }
   };
 
   return (
-    <div style={{ margin: "20px" }}>
+    <div style={{ margin: '20px' }}>
       <h1>Gestión de Productos y Categorías</h1>
 
-      <section style={{ marginBottom: "40px" }}>
+      <section style={{ marginBottom: '40px' }}>
         <h2>Crear Categoría</h2>
         <ProductForm
           categorias={[]}
@@ -159,7 +153,7 @@ const App: React.FC = () => {
         />
       </section>
 
-      <section style={{ marginBottom: "20px" }}>
+      <section style={{ marginBottom: '20px' }}>
         <h2>Filtros</h2>
         <FilterBar
           categorias={categorias}
@@ -176,7 +170,7 @@ const App: React.FC = () => {
         />
       </section>
 
-      <section style={{ marginBottom: "40px" }}>
+      <section style={{ marginBottom: '40px' }}>
         <h2>Crear Producto</h2>
         <ProductForm
           categorias={categorias}
@@ -185,7 +179,7 @@ const App: React.FC = () => {
         />
       </section>
 
-      <section> 
+      <section>
         <h2>Productos</h2>
         <ProductList
           productos={productos}

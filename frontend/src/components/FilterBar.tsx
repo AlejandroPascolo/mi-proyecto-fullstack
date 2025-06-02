@@ -1,6 +1,6 @@
-import React from "react";
-import { Categoria } from "../types/types";
-import CategorySelect from "./CategorySelect";
+import React from 'react';
+import { Categoria } from '../types/types';
+import CategorySelect from './CategorySelect';
 
 interface FilterBarProps {
   categorias: Categoria[];
@@ -30,7 +30,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
   onReset,
 }) => {
   return (
-    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+    <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
       <input
         type="text"
         placeholder="Buscar por nombre"
@@ -48,7 +48,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         type="number"
         placeholder="Precio min"
         step="0.01"
-        value={filtroMinPrecio !== undefined ? filtroMinPrecio : ""}
+        value={filtroMinPrecio !== undefined ? filtroMinPrecio : ''}
         onChange={(e) =>
           setFiltroMinPrecio(e.target.value ? parseFloat(e.target.value) : undefined)
         }
@@ -58,7 +58,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
         type="number"
         placeholder="Precio max"
         step="0.01"
-        value={filtroMaxPrecio !== undefined ? filtroMaxPrecio : ""}
+        value={filtroMaxPrecio !== undefined ? filtroMaxPrecio : ''}
         onChange={(e) =>
           setFiltroMaxPrecio(e.target.value ? parseFloat(e.target.value) : undefined)
         }

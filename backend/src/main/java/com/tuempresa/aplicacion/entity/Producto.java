@@ -1,7 +1,8 @@
 package com.tuempresa.aplicacion.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
 
 /**
@@ -16,18 +17,13 @@ public class Producto {
     private Long id;
 
     @NotBlank(message = "El nombre del producto no puede estar vacío")
-    @Size(max = 150, message = "El nombre no puede superar los 150 caracteres")
-    @Column(nullable = false, length = 150)
+    @Size(max = 100, message = "El nombre no puede superar los 100 caracteres")
+    @Column(nullable = false, length = 100)
     private String nombre;
 
-    @NotNull(message = "El precio es obligatorio")
-    @DecimalMin(value = "0.0", inclusive = false, message = "El precio debe ser mayor a 0")
-    @Digits(integer = 10, fraction = 2, message = "Precio con formato inválido")
-    @Column(nullable = false, precision = 12, scale = 2)
+    @Column(nullable = false)
     private BigDecimal precio;
 
-    @NotNull(message = "El stock es obligatorio")
-    @Min(value = 0, message = "El stock no puede ser negativo")
     @Column(nullable = false)
     private Integer stock;
 
@@ -35,9 +31,12 @@ public class Producto {
     @JoinColumn(name = "categoria_id", nullable = false)
     private Categoria categoria;
 
-    public Producto() {}
+    public Producto() {
+        // Constructor por defecto para JPA
+    }
 
-    public Producto(String nombre, BigDecimal precio, Integer stock, Categoria categoria) {
+    public Producto(final String nombre, final BigDecimal precio, final Integer stock,
+                    final Categoria categoria) {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -48,7 +47,7 @@ public class Producto {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -56,7 +55,7 @@ public class Producto {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
@@ -64,7 +63,7 @@ public class Producto {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(final BigDecimal precio) {
         this.precio = precio;
     }
 
@@ -72,7 +71,7 @@ public class Producto {
         return stock;
     }
 
-    public void setStock(Integer stock) {
+    public void setStock(final Integer stock) {
         this.stock = stock;
     }
 
@@ -80,7 +79,7 @@ public class Producto {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(final Categoria categoria) {
         this.categoria = categoria;
     }
 }

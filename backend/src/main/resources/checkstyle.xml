@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+  <!-- Codificación -->
+  <property name="charset" value="UTF-8"/>
+
+  <!-- Prohibir tabuladores: solo espacios (nivel Checker) -->
+  <module name="FileTabCharacter">
+    <property name="eachLine" value="true"/>
+  </module>
+
+  <!-- Máximo 120 caracteres por línea (ignorar package/imports) -->
+  <module name="LineLength">
+    <property name="max" value="120"/>
+    <property name="ignorePattern" value="^package.*|^import.*"/>
+  </module>
+
+  <!-- TreeWalker agrupa las comprobaciones que usan el AST -->
+  <module name="TreeWalker">
+    <!-- Evita imports sin usar -->
+    <module name="UnusedImports"/>
+
+    <!-- Espacios en blanco después/antes de operadores -->
+    <module name="WhitespaceAfter"/>
+    <module name="WhitespaceAround"/>
+  </module>
+</module>

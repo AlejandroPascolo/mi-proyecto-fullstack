@@ -34,9 +34,11 @@ public class Categoria {
     )
     private List<Producto> productos = new ArrayList<>();
 
-    public Categoria() {}
+    public Categoria() {
+        // Constructor por defecto para JPA
+    }
 
-    public Categoria(String nombre, String descripcion) {
+    public Categoria(final String nombre, final String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
@@ -45,7 +47,7 @@ public class Categoria {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -53,7 +55,7 @@ public class Categoria {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
@@ -61,7 +63,7 @@ public class Categoria {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(final String descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -69,16 +71,26 @@ public class Categoria {
         return productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(final List<Producto> productos) {
         this.productos = productos;
     }
 
-    public void agregarProducto(Producto producto) {
+    /**
+     * Agrega un producto a esta categoría y establece la relación bidireccional.
+     *
+     * @param producto Objeto Producto a agregar
+     */
+    public void agregarProducto(final Producto producto) {
         productos.add(producto);
         producto.setCategoria(this);
     }
 
-    public void quitarProducto(Producto producto) {
+    /**
+     * Remueve un producto de esta categoría y elimina la relación bidireccional.
+     *
+     * @param producto Objeto Producto a remover
+     */
+    public void quitarProducto(final Producto producto) {
         productos.remove(producto);
         producto.setCategoria(null);
     }
